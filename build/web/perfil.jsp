@@ -81,7 +81,7 @@
                     <c:forEach var="figura" items="${figuras}">
                         <div class="tarjeta" onclick="window.location='${pageContext.request.contextPath}/detalle?id=${figura.idFigura}'">
                             <div class="tarjeta-img">
-                                <span class="condicion">${figura.condicion}</span>
+                                <span class="condicion">${figura.condicionTexto}</span>
                                 <c:choose>
                                     <c:when test="${not empty figura.imagenUrl}">
                                         <img src="${figura.imagenUrl}" alt="${figura.nombreFigura}" style="width:100%;height:100%;object-fit:cover;">

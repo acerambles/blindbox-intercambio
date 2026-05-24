@@ -181,7 +181,7 @@
             </div>
             <div class="detalle-fila">
                 <span class="detalle-clave">Estado</span>
-                <span class="detalle-valor">${figura.condicion}</span>
+                <span class="detalle-valor">${figura.condicionTexto}</span>
             </div>
             <c:if test="${not empty figura.busca}">
             <div class="detalle-fila">

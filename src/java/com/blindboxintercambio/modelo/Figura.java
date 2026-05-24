@@ -84,4 +84,16 @@ public class Figura {
 
     public String getCiudad() { return ciudad; }
     public void setCiudad(String ciudad) { this.ciudad = ciudad; }
+    
+    public String getCondicionTexto() {
+    switch (condicion) {
+        case "nueva_sellada": return "Nueva · Sellada";
+        case "nueva_abierta": return "Nueva · Abierta";
+        case "como_nueva":    return "Como nueva";
+        case "displayed":     return "Expuesta";
+        case "buen_estado":   return "Buen estado";
+        case "con_detalles":  return "Con detalles";
+        default:              return condicion;
+    }
+}
 }
