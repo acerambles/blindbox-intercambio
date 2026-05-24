@@ -1,0 +1,67 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.blindboxintercambio.modelo;
+
+public class Figura {
+
+    // ── Atributos (equivalen a las columnas de la tabla figuras) ──
+    private int    idFigura;
+    private int    idUsuario;
+    private int    idSerie;
+    private String nombreFigura;
+    private int    nombreVerificado;
+    private double precio;
+    private String estado;
+    private String condicion;
+    private String busca;
+    private String descripcion;
+    private String imagenUrl;
+    private String fechaPub;
+    private int    activa;
+
+    // ── Constructor vacío ──────────────────────────────────────────
+    public Figura() {}
+
+    // ── Getters y Setters ──────────────────────────────────────────
+
+    public int getIdFigura() { return idFigura; }
+    public void setIdFigura(int idFigura) { this.idFigura = idFigura; }
+
+    public int getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+
+    public int getIdSerie() { return idSerie; }
+    public void setIdSerie(int idSerie) { this.idSerie = idSerie; }
+
+    public String getNombreFigura() { return nombreFigura; }
+    public void setNombreFigura(String nombreFigura) { this.nombreFigura = nombreFigura; }
+
+    public int getNombreVerificado() { return nombreVerificado; }
+    public void setNombreVerificado(int nombreVerificado) { this.nombreVerificado = nombreVerificado; }
+
+    public double getPrecio() { return precio; }
+    public void setPrecio(double precio) { this.precio = precio; }
+
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
+
+    public String getCondicion() { return condicion; }
+    public void setCondicion(String condicion) { this.condicion = condicion; }
+
+    public String getBusca() { return busca; }
+    public void setBusca(String busca) { this.busca = busca; }
+
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public String getImagenUrl() { return imagenUrl; }
+    public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
+
+    public String getFechaPub() { return fechaPub; }
+    public void setFechaPub(String fechaPub) { this.fechaPub = fechaPub; }
+
+    public int getActiva() { return activa; }
+    public void setActiva(int activa) { this.activa = activa; }
+}
