@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +13,7 @@
 </head>
 <body>
     
-<<div class="topnav">
+<div class="topnav">
   <a href="${pageContext.request.contextPath}/index" class="logo">Trade<span>o</span></a>
   <div class="nav-enlaces">
   <a href="${pageContext.request.contextPath}/index">Inicio</a>
@@ -104,12 +105,12 @@
 
     <div class="form-grupo">
       <label class="form-label">Nueva contrasena</label>
-      <input type="password" class="form-input" placeholder="Minimo 8 caracteres">
+      <input type="password" name="passwordNueva" class="form-input" placeholder="Minimo 8 caracteres">
     </div>
 
     <div class="form-grupo">
       <label class="form-label">Confirmar nueva contrasena</label>
-      <input type="password" class="form-input" placeholder="Repite la nueva contrasena">
+      <input type="password" name="passwordConfirmar" class="form-input" placeholder="Repite la nueva contrasena">
     </div>
 
     <div class="publicar-botones">

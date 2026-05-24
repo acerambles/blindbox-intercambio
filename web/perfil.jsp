@@ -41,7 +41,7 @@
 
     <!--Cabecera perfil-->
     <div class="perfil-cabecera">
-        <div class="perfil-avatar">${usuario.username}</div>
+        <div class="perfil-avatar">${fn:substring(usuario.username, 0, 1)}</div>
         <div class="perfil-info">
             <h1 class="perfil-nombre">${usuario.username}</h1>
             <c:if test="${usuario.mostrarNombre == 1}">

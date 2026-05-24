@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -93,7 +94,7 @@
         <c:choose>
             <c:when test="${not empty sessionScope.idUsuario}">
         <div class="comentario-nuevo">
-            <div class="comentario-avatar">${sessionScope.username}</div>
+            <div class="comentario-avatar">${fn:substring(sessionScope.username, 0, 1)}</div>
             <form method="post" action="${pageContext.request.contextPath}/mensaje" 
             style="display:flex;gap:0.6rem;flex:1;">
             <input type="hidden" name="idFigura" value="${figura.idFigura}"> 
@@ -199,7 +200,7 @@
         <div class="panel">
             <h3 class="panel-titulo">Vendedor</h3>
             <div class="vendedor">
-                <div class="comentario-avatar">${vendedor.username}</div>
+                <div class="comentario-avatar">${fn:substring(vendedor.username, 0, 1)}</div>
             <div>
         <p class="vendedor-nombre">${vendedor.username}</p>
         <p class="vendedor-info">${figura.ciudad}</p>
