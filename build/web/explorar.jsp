@@ -83,9 +83,12 @@
                 </c:choose>
             </div>
             <div class="tarjeta-cuerpo">
-                <p class="tarjeta-meta">${figura.idSerie}</p>
-                <p class="tarjeta-nombre">${figura.nombreFigura}</p>
-                <p class="tarjeta-ciudad"></p>
+                <p class="tarjeta-meta">${figura.nombreModelo} · ${figura.nombreMarca}</p>
+                <p class="tarjeta-nombre">${figura.nombreSerie}</p>
+                <c:if test="${not empty figura.nombreFigura}">
+                    <p style="font-size:0.78rem;color:#7a3558;">${figura.nombreFigura}</p>
+                </c:if>
+                <p class="tarjeta-ciudad">${figura.ciudad}</p>
                 <c:if test="${not empty figura.busca}">
                     <p class="tarjeta-busca"><strong>Busca:</strong> ${figura.busca}</p>
                 </c:if>

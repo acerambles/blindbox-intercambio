@@ -20,6 +20,11 @@ public class Figura {
     private String imagenUrl;
     private String fechaPub;
     private int    activa;
+    private String nombreSerie;
+    private String nombreModelo;
+    private String nombreMarca;
+    private String username;
+    private String ciudad;
 
     // ── Constructor vacío ──────────────────────────────────────────
     public Figura() {}
@@ -64,4 +69,19 @@ public class Figura {
 
     public int getActiva() { return activa; }
     public void setActiva(int activa) { this.activa = activa; }
+    
+    public String getNombreSerie() { return nombreSerie; }
+    public void setNombreSerie(String nombreSerie) { this.nombreSerie = nombreSerie; }
+    
+    public String getNombreModelo() { return nombreModelo; }
+    public void setNombreModelo(String nombreModelo) { this.nombreModelo = nombreModelo; }
+
+    public String getNombreMarca() { return nombreMarca; }
+    public void setNombreMarca(String nombreMarca) { this.nombreMarca = nombreMarca; }
+
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getCiudad() { return ciudad; }
+    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
 }

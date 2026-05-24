@@ -90,10 +90,13 @@
                                 </c:choose>
                             </div>
                 <div class="tarjeta-cuerpo">
-                    <p class="tarjeta-meta">${figura.idSerie}</p>
-                    <p class="tarjeta-nombre">${figura.nombreFigura}</p>
+                    <p class="tarjeta-meta">${figura.nombreModelo} · ${figura.nombreMarca}</p>
+                    <p class="tarjeta-nombre">${figura.nombreSerie}</p>
+                    <c:if test="${not empty figura.nombreFigura}">
+                        <p style="font-size:0.78rem;color:#7a3558;">${figura.nombreFigura}</p>
+                    </c:if>
                     <span class="etiqueta etiqueta-${figura.estado}">${figura.estado}</span>
-                    <p class="tarjeta-ciudad"></p>
+                    <p class="tarjeta-ciudad">${figura.ciudad}</p>
                     <div class="tarjeta-foot">
                         <c:choose>
                             <c:when test="${figura.precio > 0}">

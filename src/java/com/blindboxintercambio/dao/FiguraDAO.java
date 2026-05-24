@@ -42,7 +42,18 @@ public class FiguraDAO {
     // ── Listar figuras recientes ───────────────────────────────────
     public List<Figura> listarRecientes() {
         List<Figura> lista = new ArrayList<>();
-        String sql = "SELECT * FROM figuras WHERE activa = 1 ORDER BY fecha_pub DESC LIMIT 6";
+        String sql = "SELECT f.*, "+
+                "s.nombre AS nombre_serie, " +
+                "mo.nombre AS nombre_modelo, " +
+                "ma.nombre AS nombre_marca, " +
+                "u.username, u.ciudad " +
+                "FROM figuras f " +
+                "JOIN series s ON f.id_serie = s.id_serie " +
+                "JOIN modelos mo ON s.id_modelo = mo.id_modelo " +
+                "JOIN marcas ma ON mo.id_marca = ma.id_marca " +
+                "JOIN usuarios u ON f.id_usuario = u.id_usuario " +
+                "WHERE f.activa = 1 " +
+                "ORDER BY f.fecha_pub DESC LIMIT 6";
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -60,11 +71,16 @@ public class FiguraDAO {
                 f.setDescripcion(rs.getString("descripcion"));
                 f.setImagenUrl(rs.getString("imagen_url"));
                 f.setFechaPub(rs.getString("fecha_pub"));
+                f.setNombreSerie(rs.getString("nombre_serie"));
+                f.setNombreModelo(rs.getString("nombre_modelo"));
+                f.setNombreMarca(rs.getString("nombre_marca"));
+                f.setUsername(rs.getString("username"));
+                f.setCiudad(rs.getString("ciudad"));
                 lista.add(f);
             }
 
         } catch (SQLException e) {
-            System.err.println("Error al listar figuras: " + e.getMessage());
+            System.err.println("Error al listar figuras recientes: " + e.getMessage());
         }
         return lista;
     }
@@ -72,7 +88,18 @@ public class FiguraDAO {
     // ── Listar figuras por usuario ─────────────────────────────────
     public List<Figura> listarPorUsuario(int idUsuario) {
         List<Figura> lista = new ArrayList<>();
-        String sql = "SELECT * FROM figuras WHERE id_usuario = ? AND activa = 1 ORDER BY fecha_pub DESC";
+        String sql = "SELECT f.*, "+
+                "s.nombre AS nombre_serie, " +
+                "mo.nombre AS nombre_modelo, " +
+                "ma.nombre AS nombre_marca, " +
+                "u.username, u.ciudad " +
+                "FROM figuras f " +
+                "JOIN series s ON f.id_serie = s.id_serie " +
+                "JOIN modelos mo ON s.id_modelo = mo.id_modelo " +
+                "JOIN marcas ma ON mo.id_marca = ma.id_marca " +
+                "JOIN usuarios u ON f.id_usuario = u.id_usuario " +
+                "WHERE f.activa = 1 AND f.id_usuario = ? " +
+                "ORDER BY f.fecha_pub DESC";
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -91,6 +118,11 @@ public class FiguraDAO {
                 f.setDescripcion(rs.getString("descripcion"));
                 f.setImagenUrl(rs.getString("imagen_url"));
                 f.setFechaPub(rs.getString("fecha_pub"));
+                f.setNombreSerie(rs.getString("nombre_serie"));
+                f.setNombreModelo(rs.getString("nombre_modelo"));
+                f.setNombreMarca(rs.getString("nombre_marca"));
+                f.setUsername(rs.getString("username"));
+                f.setCiudad(rs.getString("ciudad"));
                 lista.add(f);
             }
 
@@ -102,7 +134,17 @@ public class FiguraDAO {
 
     // ── Buscar figura por ID ───────────────────────────────────────
     public Figura buscarPorId(int id) {
-        String sql = "SELECT * FROM figuras WHERE id_figura = ? AND activa = 1";
+        String sql = "SELECT f.*, "+
+                "s.nombre AS nombre_serie, " +
+                "mo.nombre AS nombre_modelo, " +
+                "ma.nombre AS nombre_marca, " +
+                "u.username, u.ciudad " +
+                "FROM figuras f " +
+                "JOIN series s ON f.id_serie = s.id_serie " +
+                "JOIN modelos mo ON s.id_modelo = mo.id_modelo " +
+                "JOIN marcas ma ON mo.id_marca = ma.id_marca " +
+                "JOIN usuarios u ON f.id_usuario = u.id_usuario " +
+                "WHERE f.activa = 1 AND f.id_figura = ?";
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -122,6 +164,11 @@ public class FiguraDAO {
                 f.setDescripcion(rs.getString("descripcion"));
                 f.setImagenUrl(rs.getString("imagen_url"));
                 f.setFechaPub(rs.getString("fecha_pub"));
+                f.setNombreSerie(rs.getString("nombre_serie"));
+                f.setNombreModelo(rs.getString("nombre_modelo"));
+                f.setNombreMarca(rs.getString("nombre_marca"));
+                f.setUsername(rs.getString("username"));
+                f.setCiudad(rs.getString("ciudad"));
                 return f;
             }
 
@@ -150,11 +197,17 @@ public List<Figura> listarTodas(String busqueda, String estado, String marca) {
     List<Figura> lista = new ArrayList<>();
 
     StringBuilder sql = new StringBuilder(
-        "SELECT f.* FROM figuras f " +
-        "JOIN series s ON f.id_serie = s.id_serie " +
-        "JOIN modelos mo ON s.id_modelo = mo.id_modelo " +
-        "JOIN marcas ma ON mo.id_marca = ma.id_marca " +
-        "WHERE f.activa = 1 "
+        "SELECT f.*, "+
+                "s.nombre AS nombre_serie, " +
+                "mo.nombre AS nombre_modelo, " +
+                "ma.nombre AS nombre_marca, " +
+                "u.username, u.ciudad " +
+                "FROM figuras f " +
+                "JOIN series s ON f.id_serie = s.id_serie " +
+                "JOIN modelos mo ON s.id_modelo = mo.id_modelo " +
+                "JOIN marcas ma ON mo.id_marca = ma.id_marca " +
+                "JOIN usuarios u ON f.id_usuario = u.id_usuario " +
+                "WHERE f.activa = 1 "
     );
 
     if (busqueda != null && !busqueda.trim().isEmpty()) {
@@ -199,6 +252,11 @@ public List<Figura> listarTodas(String busqueda, String estado, String marca) {
             f.setDescripcion(rs.getString("descripcion"));
             f.setImagenUrl(rs.getString("imagen_url"));
             f.setFechaPub(rs.getString("fecha_pub"));
+            f.setNombreSerie(rs.getString("nombre_serie"));
+            f.setNombreModelo(rs.getString("nombre_modelo"));
+            f.setNombreMarca(rs.getString("nombre_marca"));
+            f.setUsername(rs.getString("username"));
+            f.setCiudad(rs.getString("ciudad"));
             lista.add(f);
         }
 

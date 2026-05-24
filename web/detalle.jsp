@@ -116,8 +116,8 @@
 
         <div class="panel">
             <span class="etiqueta etiqueta-${figura.estado}">${figura.estado}</span>
-            <h1 class="detalle-titulo">${figura.idSerie}</h1>
-            <p class="detalle-subtitulo">${figura.idSerie}</p>
+            <h1 class="detalle-titulo">${figura.nombreSerie}</h1>
+            <p class="detalle-subtitulo">${figura.nombreModelo} · ${figura.nombreMarca}</p>
             <c:if test="${not empty figura.nombreFigura}">
                 <p style="font-size:0.85rem;color:#7a3558;margin-bottom:1rem;">${figura.nombreFigura}</p>
             </c:if>
@@ -156,15 +156,15 @@
             <h3 class="panel-titulo">Detalles</h3>
             <div class="detalle-fila">
                 <span class="detalle-clave">Marca</span>
-                <span class="detalle-valor">${figura.idSerie}</span>
+                <span class="detalle-valor">${figura.nombreMarca}</span>
             </div>
             <div class="detalle-fila">
                 <span class="detalle-clave">Modelo</span>
-                <span class="detalle-valor">${figura.idSerie}</span>
+                <span class="detalle-valor">${figura.nombreModelo}</span>
             </div>
             <div class="detalle-fila">
                 <span class="detalle-clave">Serie</span>
-                <span class="detalle-valor">${figura.idSerie}</span>
+                <span class="detalle-valor">${figura.nombreSerie}</span>
             </div>
             <div class="detalle-fila">
                 <span class="detalle-clave">Figura</span>
@@ -202,7 +202,7 @@
                 <div class="comentario-avatar">${vendedor.username}</div>
             <div>
         <p class="vendedor-nombre">${vendedor.username}</p>
-        <p class="vendedor-info">${vendedor.ciudad} · Miembro desde 2024</p>
+        <p class="vendedor-info">${figura.ciudad}</p>
             </div>
     </div>
  </div>
