@@ -1,0 +1,14 @@
+ 
+# NetBeans
+nbproject/private/
+build/
+dist/
+*.class
+
+# Contraseñas y configuración local
+src/java/com/blindboxintercambio/util/ConexionDB.java
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.log
