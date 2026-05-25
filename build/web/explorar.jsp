@@ -54,14 +54,12 @@
     class="filtro ${estado == 'intercambio' ? 'activo-filtro' : ''}">Intercambio</a>
     <a href="${pageContext.request.contextPath}/explorar?marca=Pop+Mart" 
     class="filtro ${marca == 'Pop Mart' ? 'activo-filtro' : ''}">Pop Mart</a>
-    <a href="${pageContext.request.contextPath}/explorar?marca=Labubu" 
-    class="filtro ${marca == 'Labubu' ? 'activo-filtro' : ''}">Labubu</a>
-    <a href="${pageContext.request.contextPath}/explorar?marca=Skullpanda" 
-    class="filtro ${marca == 'Skullpanda' ? 'activo-filtro' : ''}">Skullpanda</a>
-    <a href="${pageContext.request.contextPath}/explorar?marca=Dimoo" 
-    class="filtro ${marca == 'Dimoo' ? 'activo-filtro' : ''}">Dimoo</a>
-    <a href="${pageContext.request.contextPath}/explorar?marca=Molly" 
-    class="filtro ${marca == 'Molly' ? 'activo-filtro' : ''}">Molly</a>
+    <a href="${pageContext.request.contextPath}/explorar?marca=Miniso" 
+    class="filtro ${marca == 'Miniso' ? 'activo-filtro' : ''}">MINISO</a>
+    <a href="${pageContext.request.contextPath}/explorar?marca=Tokidoki" 
+    class="filtro ${marca == 'Tokidoki' ? 'activo-filtro' : ''}">Tokidoki</a>
+    <a href="${pageContext.request.contextPath}/explorar?marca=52Toys" 
+    class="filtro ${marca == '52Toys' ? 'activo-filtro' : ''}">52Toys</a>
 </div>
 <!--Resultados-->
 <div class="figuras">

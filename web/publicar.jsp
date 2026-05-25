@@ -49,7 +49,7 @@
         </p>
     </c:if>
     <div class="publicar-form">
-        <form method="post" action="${pageContext.request.contextPath}/publicar">
+        <form method="post" action="${pageContext.request.contextPath}/publicar" onsubmit="return prepararEnvio();">
 
         <!--Fotos-->
         <div class="form-grupo">
@@ -72,7 +72,7 @@
             </div>
             <div class="form-grupo">
                 <label class="form-label">Modelo / IP *</label>
-                <select class="form-input" name="idModelo" id="select-modelo" onchange="cargarSeries()">
+                <select class="form-input" id="select-modelo" onchange="cargarSeries()">
                     <option value="">Seleccionar...</option>
                 </select>
                 <input type="text" class="form-input" id="nuevo-modelo"
@@ -81,16 +81,16 @@
             </div>
             <div class="form-grupo">
                 <label class="form-label">Serie *</label>
-                <select class="form-input" name="idSerie" id="select-serie" onchange="comprobarSerie()">
+                <select class="form-input" id="select-serie" onchange="comprobarSerie()">
                     <option value="">Seleccionar...</option>
                 </select>
-                <input type="text" class="form-input" id="nueva-serie" 
+                <input type="text" class="form-input" id="nueva-serie" name="" 
                 placeholder="Nombre de la nueva serie"
                 style="display: none; margin-top: 0.5rem;">
             </div>
 
         </div>
-
+        
         <!--Nombre fig-->
         <div class="form-grupo">
             <label class="form-label">Estado de la figura *</label>
@@ -154,6 +154,9 @@
             <textarea name="descripcion" class="form-input form-textarea" 
                       placeholder="Describe el estado, si tiene caja original..."></textarea>  
         </div>
+        
+        <input type="text" id="nombreSerieNueva" name="idSerie" style="display:none">
+        <input type="text" id="nombreModeloNuevo" name="idModelo" style="display:none">
 
         <!--Botones-->
         <div class="publicar-botones">
@@ -168,7 +171,32 @@
   <p>Tradeo · Proyecto DAW</p>
 </div>
 
-<script src="${pageContext.request.contextPath}/js/datos.js"></script>">
+<script src="${pageContext.request.contextPath}/js/datos.js"></script>
 
+<script>
+function prepararEnvio() {
+    const selectSerie = document.getElementById("select-serie");
+    const inputNuevaSerie = document.getElementById("nueva-serie");
+    const campoSerie = document.getElementById("nombreSerieNueva");
+    
+    if (selectSerie.value === "nueva") {
+        campoSerie.value = inputNuevaSerie.value;
+    } else {
+        campoSerie.value = selectSerie.value;
+    }
+    
+    const selectModelo = document.getElementById("select-modelo");
+    const inputNuevoModelo = document.getElementById("nuevo-modelo");
+    const campoModelo = document.getElementById("nombreModeloNuevo");
+    
+    if (selectModelo.value === "nuevo") {
+        campoModelo.value = inputNuevoModelo.value;
+    } else {
+        campoModelo.value = selectModelo.value;
+    }
+    
+    return true;
+}
+</script>
 </body>
 </html>

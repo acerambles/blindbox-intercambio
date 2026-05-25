@@ -55,6 +55,10 @@ public class PublicarServlet extends HttpServlet {
         String busca        = request.getParameter("busca");
         String descripcion  = request.getParameter("descripcion");
         String imagenUrl    = request.getParameter("imagenUrl");
+        
+        // DEBUG - borrar después
+        System.out.println("DEBUG idSerie recibido: " + idSerieStr);
+        System.out.println("DEBUG idModelo recibido: " + request.getParameter("idModelo"));
 
         // ── Validar campos obligatorios ────────────────────────────
         if (idSerieStr == null || idSerieStr.trim().isEmpty() ||
@@ -71,9 +75,25 @@ public class PublicarServlet extends HttpServlet {
         int idSerie = serieDAO.buscarIdPorNombre(idSerieStr);
         
         if (idSerie == -1) {
-            request.setAttribute("error", "La serie seleccionada no existe.");
-            request.getRequestDispatcher("/publicar.jsp").forward(request, response);
-            return;
+              // La serie no existe, la insertamos como no verificada
+              String idModeloStr = request.getParameter("idModelo");
+              if(idModeloStr == null || idModeloStr.trim().isEmpty()){
+                  request.setAttribute("error", "Selecciona un modelo para la nueva serie.");
+                  request.getRequestDispatcher("/publicar.jsp").forward(request, response);
+                  return;
+              }
+              int idModelo = serieDAO.buscarIdModeloPorNombre(idModeloStr);
+              if (idModelo == -1){
+                request.setAttribute("error", "El modelo seleccionado no existe.");
+                request.getRequestDispatcher("/publicar.jsp").forward(request, response);
+                return;
+              }
+              idSerie = serieDAO.insertar(idSerieStr, idModelo);
+              if (idSerie == -1){
+                  request.setAttribute("error", "Error al crear la serie.");
+                  request.getRequestDispatcher("/publicar.jsp").forward(request, response);
+                  return;
+              }
         }
         double precio = 0;
         if (precioStr != null && !precioStr.trim().isEmpty()) {

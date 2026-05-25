@@ -131,10 +131,11 @@ function cargarSeries() {
 // ── Mostrar campo nueva serie ──
 function comprobarSerie() {
   const serie = document.getElementById("select-serie").value;
+  const inputNuevaSerie = document.getElementById("nueva-serie");
   if (serie === "nueva") {
-    document.getElementById("nueva-serie").style.display = "block";
+      inputNuevaSerie.style.display = "block";
   } else {
-    document.getElementById("nueva-serie").style.display = "none";
+      inputNuevaSerie.style.display = "none";
   }
 }
 

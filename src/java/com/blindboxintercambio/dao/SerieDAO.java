@@ -29,4 +29,39 @@ public class SerieDAO {
         }
         return -1;
     }
+    public int insertar(String nombreSerie, int idModelo) {
+        String sql = "INSERT INTO series (nombre, id_modelo, verificada) VALUES (?, ?, 0)";
+        try (Connection con = ConexionDB.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+            ps.setString(1, nombreSerie);
+            ps.setInt(2, idModelo);
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al insertar serie: " + e.getMessage());
+        }
+        return -1;
+    }
+    public int buscarIdModeloPorNombre(String nombre) {
+        String sql = "SELECT id_modelo FROM modelos WHERE nombre = ?";
+        try (Connection con = ConexionDB.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id_modelo");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al buscar modelo: " + e.getMessage());
+        }
+        return -1;
+    }  
 }
