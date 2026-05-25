@@ -57,6 +57,8 @@ const series = {
 // ── Cargar marcas ──
 function cargarMarcas() {
   const select = document.getElementById("select-marca");
+  if (!select) return;
+  
   marcas.forEach(function(marca) {
     const opcion = document.createElement("option");
     opcion.value = marca;
