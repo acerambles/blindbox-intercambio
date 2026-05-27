@@ -91,7 +91,7 @@
 </div>
 
 <div class="footer">
-  <p>Tradeo · Proyecto DAW</p>
+  <p>Tradeo · Proyecto DAW· <a href="${pageContext.request.contextPath}/politicaCookies">Política de cookies</a></p>
 </div>
 
 </body>
