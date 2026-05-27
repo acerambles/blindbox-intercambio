@@ -12,6 +12,7 @@ public class Mensaje {
     private int    idRemitente;
     private String contenido;
     private String fecha;
+    private String username;
 
     // ── Constructor vacío ──────────────────────────────────────────
     public Mensaje() {}
@@ -32,4 +33,7 @@ public class Mensaje {
 
     public String getFecha() { return fecha; }
     public void setFecha(String fecha) { this.fecha = fecha; }
+    
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 }

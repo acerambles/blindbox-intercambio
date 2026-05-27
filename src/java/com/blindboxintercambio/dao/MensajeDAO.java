@@ -36,7 +36,9 @@ public class MensajeDAO {
     // ── Listar mensajes por figura ─────────────────────────────────
     public List<Mensaje> listarPorFigura(int idFigura) {
         List<Mensaje> lista = new ArrayList<>();
-        String sql = "SELECT * FROM mensajes WHERE id_figura = ? ORDER BY fecha ASC";
+        String sql = "SELECT m.*, u.username FROM mensajes m " +
+                "JOIN usuarios u ON m.id_remitente = u.id_usuario " +
+                "WHERE m.id_figura = ? ORDER BY fecha ASC";
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -50,6 +52,7 @@ public class MensajeDAO {
                 m.setIdRemitente(rs.getInt("id_remitente"));
                 m.setContenido(rs.getString("contenido"));
                 m.setFecha(rs.getString("fecha"));
+                m.setUsername(rs.getString("username"));
                 lista.add(m);
             }
 

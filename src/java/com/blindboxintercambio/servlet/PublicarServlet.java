@@ -56,9 +56,6 @@ public class PublicarServlet extends HttpServlet {
         String descripcion  = request.getParameter("descripcion");
         String imagenUrl    = request.getParameter("imagenUrl");
         
-        // DEBUG - borrar después
-        System.out.println("DEBUG idSerie recibido: " + idSerieStr);
-        System.out.println("DEBUG idModelo recibido: " + request.getParameter("idModelo"));
 
         // ── Validar campos obligatorios ────────────────────────────
         if (idSerieStr == null || idSerieStr.trim().isEmpty() ||

@@ -76,11 +76,11 @@
 
         <c:forEach var="mensaje" items="${mensajes}">
         <div class="comentario">
-            <div class="comentario-avatar">${mensaje.idRemitente}
+            <div class="comentario-avatar">${fn:substring(mensaje.username, 0, 1)}
             </div>
             <div class="comentario-cuerpo">
                 <div class="comentario-cabecera">
-                    <span class="comentario-nombre">${mensaje.idRemitente}</span>
+                    <span class="comentario-nombre">${mensaje.username}</span>
                     <c:if test="${mensaje.idRemitente == figura.idUsuario}">
                     <span class="comentario-vendedor">Vendedor</span>
                     </c:if>
